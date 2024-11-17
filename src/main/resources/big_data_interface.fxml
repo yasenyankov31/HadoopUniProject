@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="uni.fmi.ExoplanetAnalyzer.App">
+    <!-- Header -->
+    <top>
+        <Label text="Exoplanet Data Analyzer" style="-fx-font-size: 24; -fx-font-weight: bold;" BorderPane.alignment="CENTER"/>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="10" alignment="CENTER">
+            <!-- Add Padding Using Insets -->
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Filter Section -->
+            <TitledPane text="Filters" collapsible="false">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <!-- ComboBox Filter -->
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Select Analysis:"/>
+                        <ComboBox fx:id="comboBox" onAction="#comboBoxOnAction" promptText="Select Analysis"/>
+                    </HBox>
+
+                    <!-- Method Filter -->
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Method (Discovered by):"/>
+                        <TextField fx:id="methodTextField" promptText="Enter Method"/>
+                    </HBox>
+
+                    <!-- Number Filter -->
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Number of Planets:"/>
+                        <TextField fx:id="numberTextField" promptText="Enter Number"/>
+                    </HBox>
+
+                    <!-- Orbital Period Filter -->
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Orbital Period :"/>
+                        <TextField fx:id="orbitalPeriodTextField" promptText="Enter Orbital Period"/>
+                    </HBox>
+                    <VBox spacing="5">
+                        <Label text="Distance between Earth:"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Min:"/>
+                            <TextField fx:id="distanceMinTextField" promptText="Enter Min"/>
+                            <Label text="Max:"/>
+                            <TextField fx:id="distanceMaxTextField" promptText="Enter Max"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </TitledPane>
+
+            <!-- Action Section -->
+            <VBox spacing="10" alignment="CENTER">
+                <Button text="Run Analysis" fx:id="button" onAction="#buttonOnAction" prefWidth="150"/>
+            </VBox>
+            
+			<HBox spacing="10" alignment="CENTER_LEFT">
+			    <Label text="Analysis Result:"/>
+			    <ScrollPane prefWidth="400" prefHeight="200">
+			        <content>
+			            <TextArea fx:id="resultTextArea" editable="false" wrapText="true" />
+			        </content>
+			    </ScrollPane>
+			</HBox>
+        </VBox>
+    </center>
+
+    <!-- Footer -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Reset All" onAction="#resetAll"/>
+            <Button text="Exit" onAction="#exitApplication"/>
+        </HBox>
+    </bottom>
+</BorderPane>
